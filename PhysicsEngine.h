@@ -2,7 +2,7 @@
 #include "Module.h"
 #include "Globals.h"
 #include "ModulePlayer.h"
-#include "p2Point.h"
+#include "Vectors.h"
 
 class PhysicsEngine : public Module
 {
@@ -24,11 +24,12 @@ public:
     bool CleanUp();
 
 public: // May the Force be with you
-    float forceGrav();
-    float forceAeroDrag();
-    float forceAeroLift();
-    float forceHydroBuoy();
-    float forceHydroDrag();
+
+    Vec2 forceGrav();
+    Vec2 forceAeroDrag();
+    Vec2 forceAeroLift();
+    Vec2 forceHydroBuoy();
+    Vec2 forceHydroDrag();
 
     void step(float dt);
     void detectCollision();

@@ -32,29 +32,34 @@ bool PhysicsEngine::CleanUp()
 	return false;
 }
 
-float PhysicsEngine::forceGrav()
+Vec2 PhysicsEngine::forceGrav()
 {
-	return 0.0f;
+	Vec2 test;
+	return test;
 }
 
-float PhysicsEngine::forceAeroDrag()
+Vec2 PhysicsEngine::forceAeroDrag()
 {
-	return 0.0f;
+	Vec2 test;
+	return test;
 }
 
-float PhysicsEngine::forceAeroLift()
+Vec2 PhysicsEngine::forceAeroLift()
 {
-	return 0.0f;
+	Vec2 test;
+	return test;
 }
 
-float PhysicsEngine::forceHydroBuoy()
+Vec2 PhysicsEngine::forceHydroBuoy()
 {
-	return 0.0f;
+	Vec2 test;
+	return test;
 }
 
-float PhysicsEngine::forceHydroDrag()
+Vec2 PhysicsEngine::forceHydroDrag()
 {
-	return 0.0f;
+	Vec2 test;
+	return test;
 }
 
 void PhysicsEngine::step(float dt)
