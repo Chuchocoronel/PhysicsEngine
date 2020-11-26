@@ -1,11 +1,35 @@
+#include "Globals.h"
+#include "Application.h"
 #include "PhysicsEngine.h"
 
-PhysicsEngine::PhysicsEngine()
+
+PhysicsEngine::PhysicsEngine(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
+
 }
 
 PhysicsEngine::~PhysicsEngine()
 {
+}
+
+bool PhysicsEngine::Start()
+{
+	return false;
+}
+
+update_status PhysicsEngine::PreUpdate()
+{
+	return update_status();
+}
+
+update_status PhysicsEngine::PostUpdate()
+{
+	return update_status();
+}
+
+bool PhysicsEngine::CleanUp()
+{
+	return false;
 }
 
 float PhysicsEngine::forceGrav()
