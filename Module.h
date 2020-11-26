@@ -5,7 +5,7 @@ class PhysBody;
 
 class Module
 {
-private :
+private:
 	bool enabled;
 
 public:

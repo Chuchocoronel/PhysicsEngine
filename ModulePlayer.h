@@ -3,6 +3,7 @@
 #include "Animation.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include "Body.h"
 
 class PhysBody;
 
@@ -43,4 +44,17 @@ public:
 	PhysBody* flipper_up2_wheel;
 
 	PhysBody* sensor1;
+};
+
+class Rocket: public Body
+{
+public:
+	int health;
+	float fuel;
+
+public:
+
+	void launchRocket();
+	void refillFuel();
+	
 };
