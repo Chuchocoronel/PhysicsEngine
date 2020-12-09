@@ -5,6 +5,7 @@
 #include "Render.h"
 #include "Window.h"
 #include "Scene.h"
+#include "PhysicsEngine.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -32,6 +33,9 @@ bool Scene::Start()
 {
 	img = app->tex->Load("Assets/Textures/test.png");
 	app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
+	
+	Rocket rocket;
+	
 	return true;
 }
 
@@ -44,7 +48,8 @@ bool Scene::PreUpdate()
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
-	if(app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+
+	/*if(app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
 		app->render->camera.y -= 1;
 
 	if(app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
@@ -54,9 +59,24 @@ bool Scene::Update(float dt)
 		app->render->camera.x -= 1;
 
 	if(app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		app->render->camera.x += 1;
+		app->render->camera.x += 1;*/
 
-	app->render->DrawTexture(img, 380, 100);
+
+	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+		app->render->camera.y -= 1;
+
+	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		app->render->camera.y += 1;
+
+	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+		app->render->camera.x -= 1;
+
+	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+		app->render->camera.x += 1; 
+
+
+
+	app->render->DrawCircle(380, 380, 20, 255, 0, 0);
 
 	return true;
 }
