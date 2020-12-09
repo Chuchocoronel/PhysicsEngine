@@ -71,14 +71,17 @@ Vec2 PhysicsEngine::forceHydroDrag()
 	return test;
 }
 
-void PhysicsEngine::createRocket(int posX, int posY, float mass, float velocity, int health, float fuel)
+Rocket* PhysicsEngine::createRocket(int posX, int posY, float mass, float velocity, int health, float fuel)
 {
-	rocket.x = posX;
-	rocket.y = posY;
-	rocket.mass = mass;
-	rocket.v = velocity;
-	rocket.health = health;
-	rocket.fuel = fuel;
+	Rocket *rocket = new Rocket();
+	rocket->x = posX;
+	rocket->y = posY;
+	rocket->mass = mass;
+	rocket->v = velocity;
+	rocket->health = health;
+	rocket->fuel = fuel;
+
+	return rocket;
 }
 
 void PhysicsEngine::step(float dt)

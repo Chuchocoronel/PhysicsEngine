@@ -18,13 +18,7 @@ class PhysicsEngine : public Module
 public:
 
     PhysicsEngine();
-    virtual ~PhysicsEngine();
-
-public:
-
-    // Our awesome rocket
-    Rocket rocket;
-    
+    virtual ~PhysicsEngine();    
 
 public:
 
@@ -41,7 +35,7 @@ public: // May the Force be with you
     Vec2 forceHydroBuoy();
     Vec2 forceHydroDrag();
 
-    void createRocket(int posX, int posY, float mass, float velocity, int health, float fuel);
+    Rocket* createRocket(int posX, int posY, float mass, float velocity, int health, float fuel);
 
     void step(float dt);
     void detectCollision();

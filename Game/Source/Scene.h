@@ -2,8 +2,10 @@
 #define __SCENE_H__
 
 #include "Module.h"
+#include "Rocket.h"
 
 struct SDL_Texture;
+
 
 class Scene : public Module
 {
@@ -34,6 +36,8 @@ public:
 
 private:
 	SDL_Texture* img;
+
+	Rocket* rocket;
 };
 
 #endif // __SCENE_H__

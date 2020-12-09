@@ -25,5 +25,5 @@ public:
 public:
 
     void AddForce(float df);
-    void AddMomentum(float dv);
+    void AddMomentum(float xV, float yV);
 };

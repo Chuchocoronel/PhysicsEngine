@@ -6,12 +6,12 @@
 
 class Rocket : public Body
 {
-
 public:
 
-	Rocket();
-	Rocket(float _x, float _y, float _v, float _a, float _f, float _mass, int _health, float _fuel){}
-	
+	Rocket(){}
+	Rocket(float _x, float _y, float _v, float _a, float _f, float _mass, int _health, float _fuel);
+
+
 	~Rocket();
 
 public:
