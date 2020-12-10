@@ -1,4 +1,5 @@
 #pragma once
+#include "Vectors.h"
 
 class Body
 {
@@ -17,7 +18,7 @@ public:
 
     float x;
     float y;
-    float v;
+    Vec2 v;
     float a;
     float f;
     float mass;
