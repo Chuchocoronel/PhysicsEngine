@@ -45,7 +45,7 @@ void PhysicsEngine::IntegerVerlet(Vec2 *pos, Vec2 *v, Vec2 a, float dt)
 	pos->x += v->x * dt + 0.5 * a.x * dt * dt;
 	v->x += a.x * dt;
 
-	pos->y = v->y * dt + 0.5 * a.y * dt * dt;
+	pos->y += v->y * dt + 0.5 * a.y * dt * dt;
 	v->y += a.y * dt;
 
 }

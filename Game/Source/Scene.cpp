@@ -34,10 +34,10 @@ bool Scene::Awake()
 bool Scene::Start()
 {
 	img = app->tex->Load("Assets/Textures/test.png");
-	app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
+	//app->audio->PlayMusic("Assets/Audio/Music/earth_scene.ogg");
 	
-	rocket = app->physicsEngine->createRocket(Vec2(380,380), 5, Vec2(5,5), 10, 50.0f);
-
+	rocket = app->physicsEngine->createRocket(Vec2(500,500), 5, Vec2(5,5), 10, 50.0f);
+	
 	return true;
 }
 
@@ -78,7 +78,7 @@ bool Scene::Update(float dt)
 
 	
 
-
+	LOG("position of the rocket x = %.2f  y = %.2f", rocket->pos.x, rocket->pos.y);
 	
 
 	return true;
