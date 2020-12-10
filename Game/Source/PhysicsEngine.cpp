@@ -81,15 +81,11 @@ Rocket* PhysicsEngine::createRocket(int posX, int posY, float mass, float veloci
 	rocket->health = health;
 	rocket->fuel = fuel;
 
-
-
 	return rocket;
 }
 
 void PhysicsEngine::step(float dt)
 {
-
-
 }
 
 void PhysicsEngine::detectCollision()
