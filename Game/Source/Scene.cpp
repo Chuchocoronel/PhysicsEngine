@@ -36,7 +36,7 @@ bool Scene::Start()
 	img = app->tex->Load("Assets/Textures/test.png");
 	app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
 	
-	rocket = app->physicsEngine->createRocket(20, 20, 5, Vec2(5,5), 10, 50.0f);
+	rocket = app->physicsEngine->createRocket(Vec2(380,380), 5, Vec2(5,5), 10, 50.0f);
 
 	return true;
 }
@@ -65,16 +65,16 @@ bool Scene::Update(float dt)
 
 
 	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-		rocket->AddMomentum(0.0f, -0.5f);
+		rocket->AddMomentum(0.0f, -20.0f);
 
 	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		rocket->AddMomentum(0.0f, 0.5f);
+		rocket->AddMomentum(0.0f, 20.0f);
 
 	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-		rocket->AddMomentum(-0.5f, 0.0f);
+		rocket->AddMomentum(-20.0f, 0.0f);
 
 	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		rocket->AddMomentum(0.5f, 0.0f);
+		rocket->AddMomentum(20.0f, 0.0f);
 
 	
 
@@ -93,7 +93,7 @@ bool Scene::PostUpdate()
 		ret = false;
 
 	
-	app->render->DrawCircle(rocket->x, rocket->y, 20, 255, 0, 0);
+	app->render->DrawCircle(rocket->pos.x, rocket->pos.y, 20, 255, 0, 0);
 
 	return ret;
 }

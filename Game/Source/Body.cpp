@@ -12,6 +12,5 @@ void Body::AddMomentum(float xV, float yV)
 	float velocityY = yV / mass;
 	v.x += velocityX;
 	v.y += velocityY;
-	x += v.x;
-	y += v.y;
+	
 }

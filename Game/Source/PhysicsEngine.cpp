@@ -25,7 +25,7 @@ bool PhysicsEngine::Update(float dt)
 {
 	ListItem<Rocket*>* rock = rocketsList.start;
 
-	IntegerVerlet(&rock->data->x, &rock->data->v, rock->data->a, dt);
+	IntegerVerlet(&rock->data->pos, &rock->data->v, rock->data->acceleration, dt);
 
 	return true;
 }
@@ -40,10 +40,13 @@ bool PhysicsEngine::CleanUp()
 	return true;
 }
 
-void PhysicsEngine::IntegerVerlet(float *x, Vec2 *v, float a, float dt)
+void PhysicsEngine::IntegerVerlet(Vec2 *pos, Vec2 *v, Vec2 a, float dt)
 {
-	*x += v->x * dt + 0.5 * a * dt * dt;
-	v->x += a * dt;
+	pos->x += v->x * dt + 0.5 * a.x * dt * dt;
+	v->x += a.x * dt;
+
+	pos->y = v->y * dt + 0.5 * a.y * dt * dt;
+	v->y += a.y * dt;
 
 }
 
@@ -88,11 +91,10 @@ Vec2 PhysicsEngine::forceHydroDrag()
 	return test;
 }
 
-Rocket* PhysicsEngine::createRocket(int posX, int posY, float mass, Vec2 velocity, int health, float fuel)
+Rocket* PhysicsEngine::createRocket(Vec2 position, float mass, Vec2 velocity, int health, float fuel)
 {
 	Rocket *rocket = new Rocket();
-	rocket->x = posX;
-	rocket->y = posY;
+	rocket->pos = position;
 	rocket->mass = mass;
 	rocket->v = velocity;
 	rocket->health = health;
