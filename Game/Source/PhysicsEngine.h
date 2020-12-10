@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Vectors.h"
 #include "Rocket.h"
+#include "Body.h"
 
 enum class crossSection
 {
@@ -24,6 +25,7 @@ public:
 
     bool Start();
     bool PreUpdate();
+    bool Update(float dt);
     bool PostUpdate();
     bool CleanUp();
 
@@ -40,5 +42,7 @@ public: // May the Force be with you
     void step(float dt);
     void detectCollision();
     void solveCollisions();
+    void IntegerVerlet(float* x, float* v, float a, float dt);
 
+    List<Rocket*> rocketsList;
 };

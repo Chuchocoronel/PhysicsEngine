@@ -33,7 +33,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(scene);
-
+	AddModule(physicsEngine);
 	// Render last to swap buffer
 	AddModule(render);
 }
@@ -152,6 +152,8 @@ bool App::LoadConfig()
 // ---------------------------------------------
 void App::PrepareUpdate()
 {
+	dt = deltaTime.ReadSec();
+	deltaTime.Start();
 }
 
 // ---------------------------------------------

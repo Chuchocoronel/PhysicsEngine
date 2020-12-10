@@ -17,6 +17,16 @@ bool PhysicsEngine::Start()
 
 bool PhysicsEngine::PreUpdate()
 {
+
+	return true;
+}
+
+bool PhysicsEngine::Update(float dt)
+{
+	ListItem<Rocket*>* rock = rocketsList.start;
+
+	IntegerVerlet(&rock->data->x, &rock->data->v, rock->data->a, dt);
+
 	return true;
 }
 
@@ -28,6 +38,12 @@ bool PhysicsEngine::PostUpdate()
 bool PhysicsEngine::CleanUp()
 {
 	return true;
+}
+
+void PhysicsEngine::IntegerVerlet(float *x, float *v, float a, float dt)
+{
+	*x += *v * dt + 0.5 * a * dt * dt;
+	*v += a * dt;
 }
 
 Vec2 PhysicsEngine::forceGrav(float gravity, float mass1, float mass2, float distance, Vec2 direction)
@@ -80,6 +96,8 @@ Rocket* PhysicsEngine::createRocket(int posX, int posY, float mass, float veloci
 	rocket->v = velocity;
 	rocket->health = health;
 	rocket->fuel = fuel;
+
+	rocketsList.Add(rocket);
 
 	return rocket;
 }
