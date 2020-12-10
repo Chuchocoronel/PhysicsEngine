@@ -36,7 +36,7 @@ bool Scene::Start()
 	img = app->tex->Load("Assets/Textures/test.png");
 	app->audio->PlayMusic("Assets/Audio/Music/music_spy.ogg");
 	
-	rocket = app->physicsEngine->createRocket(20, 20, 5, 10.0f, 10, 50.0f);
+	rocket = app->physicsEngine->createRocket(20, 20, 5, Vec2(5,5), 10, 50.0f);
 
 	return true;
 }
