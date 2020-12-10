@@ -65,16 +65,16 @@ bool Scene::Update(float dt)
 
 
 	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-		rocket->AddMomentum(0.0f, -0.5f);
+		rocket->AddMomentum(0.0f, -20.0f);
 
 	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		rocket->AddMomentum(0.0f, 0.5f);
+		rocket->AddMomentum(0.0f, 20.0f);
 
 	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-		rocket->AddMomentum(-0.5f, 0.0f);
+		rocket->AddMomentum(-20.0f, 0.0f);
 
 	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		rocket->AddMomentum(0.5f, 0.0f);
+		rocket->AddMomentum(20.0f, 0.0f);
 
 	
 
@@ -95,6 +95,7 @@ bool Scene::PostUpdate()
 	
 	app->render->DrawCircle(rocket->x, rocket->y, 20, 255, 0, 0);
 
+	app->render->DrawLine(0,500,1280,500,255,255,255);
 	return ret;
 }
 
