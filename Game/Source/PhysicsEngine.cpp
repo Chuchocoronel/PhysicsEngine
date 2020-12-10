@@ -1,4 +1,5 @@
 #include "PhysicsEngine.h"
+#include <math.h>
 
 
 PhysicsEngine::PhysicsEngine() : Module()
@@ -12,6 +13,9 @@ PhysicsEngine::~PhysicsEngine()
 
 bool PhysicsEngine::Start()
 {
+	gravity.x = 0;
+	gravity.y = 0.5f;
+
 	return true;
 }
 
@@ -25,7 +29,9 @@ bool PhysicsEngine::Update(float dt)
 {
 	ListItem<Rocket*>* rock = rocketsList.start;
 
-	IntegerVerlet(&rock->data->pos, &rock->data->v, rock->data->acceleration, dt);
+	IntegerVerlet(&rock->data->pos, &rock->data->velocity, rock->data->acceleration, dt);
+
+	ApplyGravity();
 
 	return true;
 }
@@ -47,6 +53,20 @@ void PhysicsEngine::IntegerVerlet(Vec2 *pos, Vec2 *v, Vec2 a, float dt)
 
 	pos->y += v->y * dt + 0.5 * a.y * dt * dt;
 	v->y += a.y * dt;
+
+}
+
+void PhysicsEngine::ApplyGravity()
+{
+	ListItem<Rocket*> *item = rocketsList.start;
+
+	while (item != nullptr)
+	{
+		
+		item->data->velocity += gravity;
+
+		item = item->next;
+	}
 
 }
 
@@ -96,7 +116,7 @@ Rocket* PhysicsEngine::createRocket(Vec2 position, float mass, Vec2 velocity, in
 	Rocket *rocket = new Rocket();
 	rocket->pos = position;
 	rocket->mass = mass;
-	rocket->v = velocity;
+	rocket->velocity = velocity;
 	rocket->health = health;
 	rocket->fuel = fuel;
 

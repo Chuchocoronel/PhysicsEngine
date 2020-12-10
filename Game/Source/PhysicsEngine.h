@@ -44,5 +44,9 @@ public: // May the Force be with you
     void solveCollisions();
     void IntegerVerlet(Vec2* pos, Vec2* v, Vec2 a, float dt);
 
+    void ApplyGravity();
+
+    Vec2 gravity;
+
     List<Rocket*> rocketsList;
 };

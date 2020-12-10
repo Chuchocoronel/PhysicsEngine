@@ -17,7 +17,7 @@ public:
 public:
 
     Vec2 pos;
-    Vec2 v;
+    Vec2 velocity;
     Vec2 acceleration;
     float f;
     float mass;

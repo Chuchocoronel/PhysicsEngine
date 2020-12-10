@@ -36,7 +36,7 @@ bool Scene::Start()
 	img = app->tex->Load("Assets/Textures/test.png");
 	//app->audio->PlayMusic("Assets/Audio/Music/earth_scene.ogg");
 	
-	rocket = app->physicsEngine->createRocket(Vec2(500,500), 5, Vec2(5,5), 10, 50.0f);
+	rocket = app->physicsEngine->createRocket(Vec2(500,500), 5, Vec2(0,0), 10, 50.0f);
 	
 	return true;
 }

@@ -30,6 +30,24 @@ struct Vec2
 		y *= num;
 	}
 
+	void operator +(const Vec2& v2)
+	{
+		x += v2.x;
+		y += v2.y;
+	}
+
+	void operator -(const Vec2& v2)
+	{
+		x -= v2.x;
+		y -= v2.y;
+	}
+	
+	void operator *(float num) 
+	{
+		x *= num;
+		y *= num;
+	}
+
 	float LengthSquared() const
 	{
 		return sqrtf(x * x + y * y);
