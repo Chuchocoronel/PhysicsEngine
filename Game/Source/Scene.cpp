@@ -36,7 +36,7 @@ bool Scene::Start()
 	img = app->tex->Load("Assets/Textures/test.png");
 	//app->audio->PlayMusic("Assets/Audio/Music/earth_scene.ogg");
 	
-	rocket = app->physicsEngine->createRocket(Vec2(500,500), 5, Vec2(0,0), 10, 50.0f);
+	rocket = (Rocket*)app->physicsEngine->createRocket(Vec2(500,500), 5, Vec2(0,0), 10, 50.0f);
 	
 	return true;
 }
@@ -78,7 +78,7 @@ bool Scene::Update(float dt)
 
 	
 
-	LOG("position of the rocket x = %.2f  y = %.2f", rocket->pos.x, rocket->pos.y);
+	//LOG("position of the rocket x = %.2f  y = %.2f", rocket->pos.x, rocket->pos.y);
 	
 
 	return true;
@@ -94,6 +94,8 @@ bool Scene::PostUpdate()
 
 	
 	app->render->DrawCircle(rocket->pos.x, rocket->pos.y, 20, 255, 0, 0);
+
+	app->render->DrawRectangle(SDL_Rect{ 0,650,1300,100 }, 255, 0, 0,255,false);
 
 	return ret;
 }

@@ -1,6 +1,9 @@
 #pragma once
 #include "Vectors.h"
+#include "App.h"
+#include "Module.h"
 
+class SDL_Rect;
 class Body
 {
 
@@ -21,6 +24,7 @@ public:
     Vec2 acceleration;
     float f;
     float mass;
+    SDL_Rect *hitbox;
 
 public:
 

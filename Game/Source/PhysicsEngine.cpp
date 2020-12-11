@@ -27,7 +27,7 @@ bool PhysicsEngine::PreUpdate()
 
 bool PhysicsEngine::Update(float dt)
 {
-	ListItem<Rocket*>* rock = rocketsList.start;
+	ListItem<Body*>* rock = bodyList.start;
 
 	IntegerVerlet(&rock->data->pos, &rock->data->velocity, rock->data->acceleration, dt);
 
@@ -58,7 +58,7 @@ void PhysicsEngine::IntegerVerlet(Vec2 *pos, Vec2 *v, Vec2 a, float dt)
 
 void PhysicsEngine::ApplyGravity()
 {
-	ListItem<Rocket*> *item = rocketsList.start;
+	ListItem<Body*> *item = bodyList.start;
 
 	while (item != nullptr)
 	{
@@ -111,7 +111,7 @@ Vec2 PhysicsEngine::forceHydroDrag()
 	return test;
 }
 
-Rocket* PhysicsEngine::createRocket(Vec2 position, float mass, Vec2 velocity, int health, float fuel)
+Body* PhysicsEngine::createRocket(Vec2 position, float mass, Vec2 velocity, int health, float fuel)
 {
 	Rocket *rocket = new Rocket();
 	rocket->pos = position;
@@ -120,7 +120,7 @@ Rocket* PhysicsEngine::createRocket(Vec2 position, float mass, Vec2 velocity, in
 	rocket->health = health;
 	rocket->fuel = fuel;
 
-	rocketsList.Add(rocket);
+	bodyList.Add(rocket);
 
 	return rocket;
 }
@@ -129,8 +129,11 @@ void PhysicsEngine::step(float dt)
 {
 }
 
-void PhysicsEngine::detectCollision()
+void PhysicsEngine::detectCollision(Body &a, Body &b)
 {
+
+	
+
 }
 
 void PhysicsEngine::solveCollisions()

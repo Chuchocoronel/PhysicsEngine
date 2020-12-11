@@ -37,10 +37,10 @@ public: // May the Force be with you
     Vec2 forceHydroBuoy();
     Vec2 forceHydroDrag();
 
-    Rocket* createRocket(Vec2 position, float mass, Vec2 velocity, int health, float fuel);
+    Body* createRocket(Vec2 position, float mass, Vec2 velocity, int health, float fuel);
 
     void step(float dt);
-    void detectCollision();
+    void detectCollision(Body &a, Body &b);
     void solveCollisions();
     void IntegerVerlet(Vec2* pos, Vec2* v, Vec2 a, float dt);
 
@@ -48,5 +48,5 @@ public: // May the Force be with you
 
     Vec2 gravity;
 
-    List<Rocket*> rocketsList;
+    List<Body*> bodyList;
 };
