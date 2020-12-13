@@ -13,9 +13,7 @@ PhysicsEngine::~PhysicsEngine()
 
 bool PhysicsEngine::Start()
 {
-	gravity.x = 0;
-	gravity.y = 0.5f;
-
+	
 	return true;
 }
 
@@ -29,7 +27,12 @@ bool PhysicsEngine::Update(float dt)
 {
 	ListItem<Body*>* rock = bodyList.start;
 
-	IntegerVerlet(&rock->data->pos, &rock->data->velocity, rock->data->acceleration, dt);
+	while (rock != nullptr)
+	{
+		IntegerVerlet(&rocket->pos, &rocket->velocity, rocket->acceleration, dt);
+
+		rock = rock->next;
+	}
 
 	ApplyGravity();
 
@@ -58,7 +61,7 @@ void PhysicsEngine::IntegerVerlet(Vec2 *pos, Vec2 *v, Vec2 a, float dt)
 
 void PhysicsEngine::ApplyGravity()
 {
-	ListItem<Body*> *item = bodyList.start;
+	/*ListItem<Body*> *item = bodyList.start;
 
 	while (item != nullptr)
 	{
@@ -66,8 +69,9 @@ void PhysicsEngine::ApplyGravity()
 		item->data->velocity += gravity;
 
 		item = item->next;
-	}
+	}*/
 
+	rocket->velocity += gravity;
 }
 
 Vec2 PhysicsEngine::forceGrav(float gravity, float mass1, float mass2, float distance, Vec2 direction)
@@ -111,7 +115,7 @@ Vec2 PhysicsEngine::forceHydroDrag()
 	return test;
 }
 
-Body* PhysicsEngine::createRocket(Vec2 position, float mass, Vec2 velocity, int health, float fuel)
+Body* PhysicsEngine::CreateRocket(Vec2 position, float mass, Vec2 velocity, int health, float fuel)
 {
 	Rocket *rocket = new Rocket();
 	rocket->pos = position;
@@ -119,6 +123,17 @@ Body* PhysicsEngine::createRocket(Vec2 position, float mass, Vec2 velocity, int 
 	rocket->velocity = velocity;
 	rocket->health = health;
 	rocket->fuel = fuel;
+	
+	bodyList.Add(rocket);
+
+	return rocket;
+}
+
+Body* PhysicsEngine::CreateEarth(Vec2 position, float mass, Vec2 velocity, int health, float fuel)
+{
+	Planet* earth = new Planet();
+	earth->pos = position;
+	earth->mass = mass;
 
 	bodyList.Add(rocket);
 

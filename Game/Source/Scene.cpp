@@ -36,7 +36,8 @@ bool Scene::Start()
 	img = app->tex->Load("Assets/Textures/test.png");
 	//app->audio->PlayMusic("Assets/Audio/Music/earth_scene.ogg");
 	
-	rocket = (Rocket*)app->physicsEngine->createRocket(Vec2(500,500), 5, Vec2(0,0), 10, 50.0f);
+	app->physicsEngine->rocket = (Rocket*)app->physicsEngine->CreateRocket(Vec2(500,500), 5, Vec2(0,0), 10, 50.0f);
+	
 	
 	return true;
 }
@@ -65,16 +66,21 @@ bool Scene::Update(float dt)
 
 
 	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-		rocket->AddMomentum(0.0f, -20.0f);
+		app->physicsEngine->rocket->AddMomentum(0.0f, -20.0f);
+
 
 	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		rocket->AddMomentum(0.0f, 20.0f);
-
+		app->physicsEngine->rocket->AddMomentum(0.0f, 20.0f);
+		
+		
 	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-		rocket->AddMomentum(-20.0f, 0.0f);
-
+		app->physicsEngine->rocket->AddMomentum(-20.0f, 0.0f);
+		
+		
 	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		rocket->AddMomentum(20.0f, 0.0f);
+		app->physicsEngine->rocket->AddMomentum(20.0f, 0.0f);
+	
+		
 
 	
 
@@ -93,7 +99,7 @@ bool Scene::PostUpdate()
 		ret = false;
 
 	
-	app->render->DrawCircle(rocket->pos.x, rocket->pos.y, 20, 255, 0, 0);
+	app->render->DrawCircle(app->physicsEngine->rocket->pos.x, app->physicsEngine->rocket->pos.y, 20, 255, 0, 0);
 
 	app->render->DrawRectangle(SDL_Rect{ 0,650,1300,100 }, 255, 0, 0,255,false);
 

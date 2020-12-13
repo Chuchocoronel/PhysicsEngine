@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Vectors.h"
 #include "Rocket.h"
+#include "Planet.h"
 #include "Body.h"
 
 enum class crossSection
@@ -37,7 +38,8 @@ public: // May the Force be with you
     Vec2 forceHydroBuoy();
     Vec2 forceHydroDrag();
 
-    Body* createRocket(Vec2 position, float mass, Vec2 velocity, int health, float fuel);
+    Body* CreateRocket(Vec2 position, float mass, Vec2 velocity, int health, float fuel);
+    Body* CreateEarth(Vec2 position, float mass, Vec2 velocity, int health, float fuel);
 
     void step(float dt);
     void detectCollision(Body &a, Body &b);
@@ -47,6 +49,8 @@ public: // May the Force be with you
     void ApplyGravity();
 
     Vec2 gravity;
+    Rocket *rocket;
+
 
     List<Body*> bodyList;
 };

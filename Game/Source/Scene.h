@@ -38,6 +38,7 @@ private:
 	SDL_Texture* img;
 
 	Rocket* rocket;
+
 };
 
 #endif // __SCENE_H__

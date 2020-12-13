@@ -20,14 +20,13 @@ public:
 public:
 
     Vec2 pos;
-    Vec2 velocity;
-    Vec2 acceleration;
-    float f;
     float mass;
+    float radius;
+   
+   
     SDL_Rect *hitbox;
 
 public:
 
     void AddForce(float df);
-    void AddMomentum(float xV, float yV);
 };
