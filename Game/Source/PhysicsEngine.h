@@ -38,12 +38,9 @@ public: // May the Force be with you
     Vec2 forceHydroBuoy();
     Vec2 forceHydroDrag();
 
-    Body* CreateRocket(Vec2 position, float mass, Vec2 velocity, int health, float fuel);
-    Body* CreateEarth(Vec2 position, float mass, Vec2 velocity, int health, float fuel);
+	Rocket* CreateRocket(Vec2 position, float mass, Vec2 velocity, float rad, int health, float fuel);
+	Planet* CreatePlanet(Vec2 position, float mass, float rad);
 
-    void step(float dt);
-    void detectCollision(Body &a, Body &b);
-    void solveCollisions();
     void IntegerVerlet(Vec2* pos, Vec2* v, Vec2 a, float dt);
 
     void ApplyGravity();

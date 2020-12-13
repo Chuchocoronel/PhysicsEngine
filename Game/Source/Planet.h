@@ -9,13 +9,9 @@ class Planet : public Body
 public:
 
 	Planet() {}
-
-
-	~Planet();
+	~Planet() {}
 
 public:
 	
 	Vec2 selfGravity;
-
-
 };

@@ -13,7 +13,7 @@ PhysicsEngine::~PhysicsEngine()
 
 bool PhysicsEngine::Start()
 {
-	
+	gravity = Vec2(0, 0.5);
 	return true;
 }
 
@@ -25,16 +25,11 @@ bool PhysicsEngine::PreUpdate()
 
 bool PhysicsEngine::Update(float dt)
 {
-	ListItem<Body*>* rock = bodyList.start;
-
-	while (rock != nullptr)
-	{
-		IntegerVerlet(&rocket->pos, &rocket->velocity, rocket->acceleration, dt);
-
-		rock = rock->next;
-	}
+	IntegerVerlet(&rocket->pos, &rocket->velocity, rocket->acceleration, dt);
 
 	ApplyGravity();
+
+	rocket->OnCollision();
 
 	return true;
 }
@@ -115,7 +110,7 @@ Vec2 PhysicsEngine::forceHydroDrag()
 	return test;
 }
 
-Body* PhysicsEngine::CreateRocket(Vec2 position, float mass, Vec2 velocity, int health, float fuel)
+Rocket* PhysicsEngine::CreateRocket(Vec2 position, float mass, Vec2 velocity, float rad, int health, float fuel)
 {
 	Rocket *rocket = new Rocket();
 	rocket->pos = position;
@@ -123,34 +118,21 @@ Body* PhysicsEngine::CreateRocket(Vec2 position, float mass, Vec2 velocity, int 
 	rocket->velocity = velocity;
 	rocket->health = health;
 	rocket->fuel = fuel;
+	rocket->radius = rad;
 	
 	bodyList.Add(rocket);
 
 	return rocket;
 }
 
-Body* PhysicsEngine::CreateEarth(Vec2 position, float mass, Vec2 velocity, int health, float fuel)
+Planet* PhysicsEngine::CreatePlanet(Vec2 position, float mass, float rad)
 {
 	Planet* earth = new Planet();
 	earth->pos = position;
 	earth->mass = mass;
+	earth->radius = rad;
 
-	bodyList.Add(rocket);
+	bodyList.Add(earth);
 
-	return rocket;
-}
-
-void PhysicsEngine::step(float dt)
-{
-}
-
-void PhysicsEngine::detectCollision(Body &a, Body &b)
-{
-
-	
-
-}
-
-void PhysicsEngine::solveCollisions()
-{
+	return earth;
 }

@@ -9,14 +9,9 @@ class Body
 
 public:
 
-    Body(){}
+	Body() {}
+	~Body() {}
 
-    //Body(float _x, float _y, Vec2 _v, float _a, float _f, float _mass) : x(_x), y(_y), v(_v), a(_a), f(_f), mass(_mass) {}
-
-    ~Body()
-    {
-
-    }
 public:
 
     Vec2 pos;

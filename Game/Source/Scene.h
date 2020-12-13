@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Rocket.h"
+#include "Planet.h"
 
 struct SDL_Texture;
 
@@ -37,8 +38,7 @@ public:
 private:
 	SDL_Texture* img;
 
-	Rocket* rocket;
-
+	Planet* earth;
 };
 
 #endif // __SCENE_H__

@@ -36,8 +36,8 @@ bool Scene::Start()
 	img = app->tex->Load("Assets/Textures/test.png");
 	//app->audio->PlayMusic("Assets/Audio/Music/earth_scene.ogg");
 	
-	app->physicsEngine->rocket = (Rocket*)app->physicsEngine->CreateRocket(Vec2(500,500), 5, Vec2(0,0), 10, 50.0f);
-	
+	app->physicsEngine->rocket = app->physicsEngine->CreateRocket(Vec2(500,500), 5, Vec2(0,0), 20, 10, 50.0f);
+	earth = app->physicsEngine->CreatePlanet(Vec2(600, 900), 20, 300);
 	
 	return true;
 }
@@ -99,9 +99,8 @@ bool Scene::PostUpdate()
 		ret = false;
 
 	
-	app->render->DrawCircle(app->physicsEngine->rocket->pos.x, app->physicsEngine->rocket->pos.y, 20, 255, 0, 0);
-
-	app->render->DrawRectangle(SDL_Rect{ 0,650,1300,100 }, 255, 0, 0,255,false);
+	app->render->DrawCircle(app->physicsEngine->rocket->pos.x, app->physicsEngine->rocket->pos.y, app->physicsEngine->rocket->radius, 255, 0, 0);
+	app->render->DrawCircle(earth->pos.x, earth->pos.y, earth->radius, 255, 0, 0);
 
 	return ret;
 }
@@ -110,8 +109,6 @@ bool Scene::PostUpdate()
 bool Scene::CleanUp()
 {
 	LOG("Freeing scene");
-
-	delete rocket;
 
 	return true;
 }
